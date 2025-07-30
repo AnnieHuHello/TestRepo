@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce = 7f;
 
     private enum MovementState { idle, running,jumping,falling }
+    [SerializeField] private AudioSource jumpSoundEffect;
 
     void Start()
     {
@@ -36,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
+            jumpSoundEffect.Play();
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
 

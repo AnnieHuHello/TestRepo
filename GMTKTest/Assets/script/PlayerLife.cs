@@ -7,6 +7,8 @@ public class PlayerLife : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Animator anim;
+
+    [SerializeField] private AudioSource deathSoundEffect;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
@@ -22,6 +24,7 @@ public class PlayerLife : MonoBehaviour
         if (collision.gameObject.CompareTag("Trap"))
         {
             Debug.Log("成功识别 Trap，执行 Die()");
+            deathSoundEffect.Play();
             Die();
         }
     }
