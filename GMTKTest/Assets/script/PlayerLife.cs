@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,12 +17,15 @@ public class PlayerLife : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Trap"))
-        {
+        Debug.Log("碰撞到了：" + collision.gameObject.name + "，Tag是：" + collision.gameObject.tag);
 
+        if (collision.gameObject.CompareTag("Trap"))
+        {
+            Debug.Log("成功识别 Trap，执行 Die()");
             Die();
         }
     }
+
 
     private void Die()
     {
@@ -31,7 +34,7 @@ public class PlayerLife : MonoBehaviour
 
     }
     // Update is called once per frame
-    private void RestartLevel()
+    public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

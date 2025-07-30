@@ -25,6 +25,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+
+        if (rb.bodyType == RigidbodyType2D.Static)
+            return;
+
         dirX = Input.GetAxisRaw("Horizontal");
 
         // ✅ 修改为 velocity 而不是 linearVelocity
@@ -40,6 +44,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void UpdateAnimationState()
     {
+        if (rb.bodyType == RigidbodyType2D.Static)
+            return;
+
         MovementState state;
         if (dirX > 0f)
         {
